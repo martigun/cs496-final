@@ -23,8 +23,15 @@ app.get('/', function(req, res) {
 app.get('/myLoc/:myLatLong', function(req, res) {
 	
 	var myLatLong = req.params.myLatLong;
+	var draftLatLong = '30.25,-97.75';
+	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	
 	console.log("myLatLong: " + myLatLong);
+	
+	var dirString = 'https://maps.googleapis.com/maps/api/directions/json?'
+	dirString += 'origin=' + myLatLong;
+	dirString += '&destination=' + draftLatLong;
+	dirString += '&key=' + myKey;
 
 	var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
 	+ 'origin=33.7946333,-84.44877199999999&destination=30.25,-97.75'
@@ -33,7 +40,7 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
 
-	request.post(testString, function(error, response, body){
+	request.post(dirString, function(error, response, body){
 		
 		//body.routes[0].copyrights;
 		
@@ -51,7 +58,7 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 
 
 
-	//res.send("Location!");
+	res.send("Location!");
 
 
 });
