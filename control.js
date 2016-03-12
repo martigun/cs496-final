@@ -45,6 +45,8 @@ function getGeo(){
 			qDirString += '&destination=' + draftLatLong;
 			qDirString += '&key=' + myKey;
 			
+			getDistance(qDirString);
+			
 			//document.getElementById("demoText3").textContent = qDirString;
 			
 
@@ -59,7 +61,7 @@ function getGeo(){
 	//activates when call comes back
 	req.send(null);
 
-	// document.getElementById("demoText3").textContent = qDirString;
+	
 	
 	// //get distance
 	// var req2 = new XMLHttpRequest();
@@ -79,4 +81,13 @@ function getGeo(){
 	// req2.send(null);
 	
 
+}
+
+function getDistance(qDirString){
+	
+	
+	document.getElementById("demoText3").textContent = qDirString;
+	
+	
+	
 }
