@@ -3,11 +3,19 @@
 //add listener
 //document.getElementById("addButton").addEventListener("click", addClick);
 
+//Chicago
+//lat: +41.921542
+//lng: -87.702482
+//Chi: latlng=41.921542,-87.702482
+//Atl: latlng=33.794633,-84.448771
+//church 33.758468, -84.408005
+
 function getGeo(){
 	
+	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
+	var qString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
 	
-	var qString = 'https://www.googleapis.com/geolocation'
-	qString += '/v1/geolocate?key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg'
+	var draftLatLong = '33.758468,-84.408005';
 	
 	//alert("Get geo!");
 	
@@ -23,15 +31,20 @@ function getGeo(){
 			//alert("we got it!");
 			
 			var obj = JSON.parse(req.responseText);
-			
 			var myLatLong = obj.location.lat + "," + obj.location.lng;
 			
+			document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
+			document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
 			
-			//document.getElementById("demoText").textContent = req.responseText;
+			//get distance
 			
-			var tString = "myLatLong: " + myLatLong
 			
-			document.getElementById("demoText").textContent = tString;
+			
+			
+			
+			
+			
+			
 			
 			
 		} else {
@@ -44,10 +57,5 @@ function getGeo(){
 	//activates when call comes back
 	req.send(null);
 	
-	//Chicago
-	//lat: +41.921542
-	//lng: -87.702482
-	//Chi: latlng=41.921542,-87.702482
-	//Atl: latlng=33.794633,-84.448771
-	//church 33.758468, -84.408005
+
 }
