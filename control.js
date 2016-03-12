@@ -29,10 +29,9 @@ function getGeo(){
 	
 	alert(testString);
 	
-	return;
-	
 	var req = new XMLHttpRequest();
-	req.open("POST", qGeoString, true); //true for async!
+	//req.open("POST", qGeoString, true); //true for async!
+	req.open("POST", testString, true); //true for async!
 	
 	//waits for the response to load
 	req.addEventListener('load',function(){
@@ -40,21 +39,21 @@ function getGeo(){
 		if(req.status >= 200 && req.status < 400){
 			
 
-			//alert("we got it!");
+			document.getElementById("demoText4").textContent = req.responseText;
 			
-			var obj = JSON.parse(req.responseText);
-			var myLatLong = obj.location.lat + "," + obj.location.lng;
+			// var obj = JSON.parse(req.responseText);
+			// var myLatLong = obj.location.lat + "," + obj.location.lng;
 			
-			document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
-			document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
+			// document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
+			// document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
 			
-			//set up qDirString
-			qDirString += 'origin=' + myLatLong;
-			qDirString += '&destination=' + draftLatLong;
-			qDirString += '&key=' + myKey;
+			// //set up qDirString
+			// qDirString += 'origin=' + myLatLong;
+			// qDirString += '&destination=' + draftLatLong;
+			// qDirString += '&key=' + myKey;
 			
-			//run getDistance
-			getDistance(qDirString);
+			// //run getDistance
+			// getDistance(qDirString);
 			
 		} else {
 			
