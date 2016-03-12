@@ -10,6 +10,8 @@
 //Atl: latlng=33.794633,-84.448771
 //church 33.758468, -84.408005
 
+//here we go
+
 function getGeo(){
 	
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
