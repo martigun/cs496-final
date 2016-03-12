@@ -23,10 +23,13 @@ app.get('/', function(req, res) {
 app.get('/myLoc/:myLatLong', function(req, res) {
 	
 	var myLatLong = req.params.myLatLong;
-	var draftLatLong = '30.25,-97.75';
+	
+	//var draftLatLong = '30.25,-97.75'; //Austin
+	var draftLatLong = '41.921542,-87.702482'; //Chicago
+	
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	
-	console.log("myLatLong: " + myLatLong);
+	//console.log("myLatLong: " + myLatLong);
 	
 	var dirString = 'https://maps.googleapis.com/maps/api/directions/json?'
 	dirString += 'origin=' + myLatLong;
@@ -50,10 +53,12 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 		
 		console.log(obj.routes[0].copyrights);
 		
+		console.log("------ How far are you from the draft? ------");
 		console.log("Distance: " + obj.routes[0].legs[0].distance.text);
 		console.log("Duration: " + obj.routes[0].legs[0].duration.text);
-		console.log("End: " + obj.routes[0].legs[0].end_address);
 		console.log("Start: " + obj.routes[0].legs[0].start_address);
+		console.log("End: " + obj.routes[0].legs[0].end_address);
+		
 		
 	})
 
