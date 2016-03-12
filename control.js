@@ -64,8 +64,8 @@ function getGeo(){
 
 function getDistance(qDirString){
 	
-	
 	document.getElementById("demoText3").textContent = qDirString;
+	alert("here we get directions!");
 	
 	//get distance
 	var req = new XMLHttpRequest();
@@ -73,17 +73,20 @@ function getDistance(qDirString){
 
 	//wait for response to load
 	req.addEventListener('load',function(){
+		
+		//check status
+		if(req.status >= 200 && req.status < 400){
+			
+			alert("Directions success!");
+			document.getElementById("demoText4").textContent = req.responseText;
 
-		alert("Directions success!");	
-
-		document.getElementById("demoText4").textContent = req.responseText;
-
-
-
+			
+		} else {
+			
+			//there was an error
+			console.log("Error in network request: " + req.statusText);
+		};
 	})
 
 	req.send(null);
-	
-	
-	
 }
