@@ -3,7 +3,7 @@
 
 function getGeoRequest(){
 	
-	window.location.assign("/myLoc");
+	window.location.assign("/myLoc/33.758468,-84.408005");
 	
 }
 

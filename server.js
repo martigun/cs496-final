@@ -29,8 +29,11 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 		
 		//body.routes[0].copyrights;
 		
+		//var printMe = body.routes[0].copyrights;
 		
-		console.log(body.routes[0].copyrights);
+		var obj = JSON.stringify(body);
+		
+		console.log(obj.routes[0].copyrights);
 		
 	})
 
