@@ -5,11 +5,14 @@ var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 
 var bodyParser = require('body-parser'); //requires the body-parser module
-
-//uses bodyParser to parse the contact rec'd from front end
-app.use(bodyParser.json());
-
 var app = express();
+
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json()); //json data
+
+
 
 app.use(express.static(__dirname));
 
