@@ -45,11 +45,8 @@ function getGeo(){
 			qDirString += '&destination=' + draftLatLong;
 			qDirString += '&key=' + myKey;
 			
+			//run getDistance
 			getDistance(qDirString);
-			
-			//document.getElementById("demoText3").textContent = qDirString;
-			
-
 			
 		} else {
 			
@@ -62,24 +59,6 @@ function getGeo(){
 	req.send(null);
 
 	
-	
-	// //get distance
-	// var req2 = new XMLHttpRequest();
-	// req2.open("POST", qDirString, true); //true for async!
-
-	// //wait for response to load
-	// req2.addEventListener('load',function(){
-
-		// alert("Directions success!");	
-
-		// document.getElementById("demoText4").textContent = req.responseText;
-
-
-
-	// })
-
-	// req2.send(null);
-	
 
 }
 
@@ -87,6 +66,23 @@ function getDistance(qDirString){
 	
 	
 	document.getElementById("demoText3").textContent = qDirString;
+	
+	//get distance
+	var req = new XMLHttpRequest();
+	req.open("POST", qDirString, true); //true for async!
+
+	//wait for response to load
+	req.addEventListener('load',function(){
+
+		alert("Directions success!");	
+
+		document.getElementById("demoText4").textContent = req.responseText;
+
+
+
+	})
+
+	req.send(null);
 	
 	
 	
