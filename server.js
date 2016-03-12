@@ -4,6 +4,11 @@ var express = require('express'); // Express web server framework
 
 var request = require('request'); // "Request" library
 
+var bodyParser = require('body-parser'); //requires the body-parser module
+
+//uses bodyParser to parse the contact rec'd from front end
+app.use(bodyParser.json());
+
 var app = express();
 
 app.use(express.static(__dirname));
@@ -31,7 +36,7 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 		
 		//var printMe = body.routes[0].copyrights;
 		
-		var obj = JSON.stringify(body);
+		var obj = JSON.parse(body);
 		
 		console.log(obj.routes[0].copyrights);
 		
