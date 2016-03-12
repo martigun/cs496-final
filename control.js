@@ -24,11 +24,12 @@ function getGeo(){
 			
 			var obj = JSON.parse(req.responseText);
 			
+			var myLatLong = obj.location.lat + "," + obj.location.lng;
+			
+			
 			//document.getElementById("demoText").textContent = req.responseText;
 			
-			var tString = "latitude: " + obj.location.lat;
-			
-			tString += " | long: " + obj.location.lng;
+			var tString = "myLatLong: " + myLatLong
 			
 			document.getElementById("demoText").textContent = tString;
 			
