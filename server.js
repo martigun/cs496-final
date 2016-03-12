@@ -1,19 +1,15 @@
 
 
-var express = require('express'); // Express web server framework
-
-var request = require('request'); // "Request" library
-
-var bodyParser = require('body-parser'); //requires the body-parser module
+//set requires
 var app = express();
+var express = require('express'); // Express web server framework
+var request = require('request'); // "Request" library
+var bodyParser = require('body-parser'); //requires the body-parser module
 
-// parse application/x-www-form-urlencoded 
+
+//set uses
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(bodyParser.json()); //json data
-
-
-
 app.use(express.static(__dirname));
 
 
@@ -42,6 +38,10 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 		var obj = JSON.parse(body);
 		
 		console.log(obj.routes[0].copyrights);
+		
+		console.log("Distance: " + obj.routes[0].legs[0].distance.text);
+		console.log("Start: " + obj.routes[0].legs[0].end_address);
+		console.log("Distance: " + obj.routes[0].legs[0].start_address);
 		
 	})
 
