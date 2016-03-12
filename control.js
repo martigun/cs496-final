@@ -1,5 +1,13 @@
 
 
+
+function getGeoRequest(){
+	
+	window.location.assign("/myLoc");
+	
+}
+
+
 //add listener
 //document.getElementById("addButton").addEventListener("click", addClick);
 
