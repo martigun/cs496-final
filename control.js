@@ -9,7 +9,7 @@ function getGeo(){
 	var qString = 'https://www.googleapis.com/geolocation'
 	qString += '/v1/geolocate?key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg'
 	
-	alert("Get geo!");
+	//alert("Get geo!");
 	
 	var req = new XMLHttpRequest();
 	req.open("POST", qString, true); //true for async!
@@ -20,7 +20,7 @@ function getGeo(){
 		if(req.status >= 200 && req.status < 400){
 			
 
-			alert("we got it!");
+			//alert("we got it!");
 			
 			//var obj = JSON.parse(req.responseText);
 			
