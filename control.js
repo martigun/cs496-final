@@ -25,21 +25,20 @@ function getGeoRequest(){
 
 function getGeo(){
 	
-	var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
-	+ 'origin=33.7946333,-84.44877199999999&destination=30.25,-97.75'
-	+ '&key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
+	// var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
+	// + 'origin=33.7946333,-84.44877199999999&destination=30.25,-97.75'
+	// + '&key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
-	var qDirString = 'https://maps.googleapis.com/maps/api/directions/json?';
+	//var qDirString = 'https://maps.googleapis.com/maps/api/directions/json?';
 	
-	var draftLatLong = '30.25,-97.75';
+	//var draftLatLong = '30.25,-97.75';
 	
-	alert(testString);
+	//alert(testString);
 	
 	var req = new XMLHttpRequest();
-	//req.open("POST", qGeoString, true); //true for async!
-	req.open("POST", testString, true); //true for async!
+	req.open("POST", qGeoString, true); //true for async!
 	
 	//waits for the response to load
 	req.addEventListener('load',function(){
@@ -47,21 +46,26 @@ function getGeo(){
 		if(req.status >= 200 && req.status < 400){
 			
 
-			document.getElementById("demoText4").textContent = req.responseText;
+			//document.getElementById("demoText4").textContent = req.responseText;
 			
-			// var obj = JSON.parse(req.responseText);
-			// var myLatLong = obj.location.lat + "," + obj.location.lng;
+			var obj = JSON.parse(req.responseText);
+			var myLatLong = obj.location.lat + "," + obj.location.lng;
 			
-			// document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
-			// document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
+			//document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
+			//document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
 			
-			// //set up qDirString
+			//set up qDirString
 			// qDirString += 'origin=' + myLatLong;
 			// qDirString += '&destination=' + draftLatLong;
 			// qDirString += '&key=' + myKey;
 			
-			// //run getDistance
-			// getDistance(qDirString);
+			//run getDistance
+			//getDistance(qDirString);
+			
+			
+			
+			//Direct to myLoc
+			window.location.assign("/myLoc/" + myLatLong);
 			
 		} else {
 			
@@ -77,31 +81,31 @@ function getGeo(){
 
 }
 
-function getDistance(qDirString){
+// function getDistance(qDirString){
 	
-	document.getElementById("demoText3").textContent = qDirString;
-	alert("here we get directions!");
+	// document.getElementById("demoText3").textContent = qDirString;
+	// alert("here we get directions!");
 	
-	//get distance
-	var req = new XMLHttpRequest();
-	req.open("POST", qDirString, true); //true for async!
+	// //get distance
+	// var req = new XMLHttpRequest();
+	// req.open("POST", qDirString, true); //true for async!
 
-	//wait for response to load
-	req.addEventListener('load',function(){
+	// //wait for response to load
+	// req.addEventListener('load',function(){
 		
-		//check status
-		if(req.status >= 200 && req.status < 400){
+		// //check status
+		// if(req.status >= 200 && req.status < 400){
 			
-			alert("Directions success!");
-			document.getElementById("demoText4").textContent = req.responseText;
+			// alert("Directions success!");
+			// document.getElementById("demoText4").textContent = req.responseText;
 
 			
-		} else {
+		// } else {
 			
-			//there was an error
-			console.log("Error in network request: " + req.statusText);
-		};
-	})
+			// //there was an error
+			// console.log("Error in network request: " + req.statusText);
+		// };
+	// })
 
-	req.send(null);
-}
+	// req.send(null);
+// }

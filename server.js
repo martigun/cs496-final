@@ -1,11 +1,12 @@
 
 
 //set requires
-var app = express();
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var bodyParser = require('body-parser'); //requires the body-parser module
 
+//set app
+var app = express();
 
 //set uses
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +21,10 @@ app.get('/', function(req, res) {
 });
 
 app.get('/myLoc/:myLatLong', function(req, res) {
-
+	
+	var myLatLong = req.params.myLatLong;
+	
+	console.log("myLatLong: " + myLatLong);
 
 	var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
 	+ 'origin=33.7946333,-84.44877199999999&destination=30.25,-97.75'
