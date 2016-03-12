@@ -15,14 +15,15 @@
 function getGeo(){
 	
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
-	var qString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
+	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
+	var qDirString = 'https://maps.googleapis.com/maps/api/directions/json?';
 	
 	var draftLatLong = '33.758468,-84.408005';
 	
 	//alert("Get geo!");
 	
 	var req = new XMLHttpRequest();
-	req.open("POST", qString, true); //true for async!
+	req.open("POST", qGeoString, true); //true for async!
 	
 	//waits for the response to load
 	req.addEventListener('load',function(){
@@ -38,7 +39,16 @@ function getGeo(){
 			document.getElementById("demoText").textContent = "myLatLong: " + myLatLong;
 			document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
 			
+			//set up qDirString
+			qDirString += 'orig=' + myLatLong;
+			qDirString += '&destination=' + draftLatLong;
+			qDirString += '&key=' + myKey;
+			
+			document.getElementById("demoText3").textContent = qDirString;
+			
 			//get distance
+			//var req2 = new XMLHttpRequest();
+			//req.open("POST", qDirString, true); //true for async!
 			
 			
 			
