@@ -18,8 +18,19 @@ app.get('/', function(req, res) {
 app.get('/myLoc', function(req, res) {
 
 
+	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
+	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
 
-	res.send("Location!");
+	request.post(qGeoString, function(error, response, body){
+		
+		
+		console.log(body);
+		
+	})
+
+
+
+	//res.send("Location!");
 
 
 });
