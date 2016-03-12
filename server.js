@@ -51,8 +51,9 @@ app.get('/myLoc/:myLatLong', function(req, res) {
 		console.log(obj.routes[0].copyrights);
 		
 		console.log("Distance: " + obj.routes[0].legs[0].distance.text);
-		console.log("Start: " + obj.routes[0].legs[0].end_address);
-		console.log("Distance: " + obj.routes[0].legs[0].start_address);
+		console.log("Duration: " + obj.routes[0].legs[0].duration.text);
+		console.log("End: " + obj.routes[0].legs[0].end_address);
+		console.log("Start: " + obj.routes[0].legs[0].start_address);
 		
 	})
 
