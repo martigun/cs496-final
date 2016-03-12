@@ -8,7 +8,8 @@
 //lng: -87.702482
 //Chi: latlng=41.921542,-87.702482
 //Atl: latlng=33.794633,-84.448771
-//church 33.758468, -84.408005
+//church 33.758468,-84.408005
+//austin 30.25,-97.75
 
 //here we go
 
@@ -18,7 +19,7 @@ function getGeo(){
 	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
 	var qDirString = 'https://maps.googleapis.com/maps/api/directions/json?';
 	
-	var draftLatLong = '33.758468,-84.408005';
+	var draftLatLong = '30.25,-97.75';
 	
 	//alert("Get geo!");
 	
@@ -40,24 +41,26 @@ function getGeo(){
 			document.getElementById("demoText2").textContent = "draftLatLong: " + draftLatLong;
 			
 			//set up qDirString
-			qDirString += 'orig=' + myLatLong;
+			qDirString += 'origin=' + myLatLong;
 			qDirString += '&destination=' + draftLatLong;
 			qDirString += '&key=' + myKey;
 			
 			document.getElementById("demoText3").textContent = qDirString;
 			
 			//get distance
-			//var req2 = new XMLHttpRequest();
-			//req.open("POST", qDirString, true); //true for async!
+			var req2 = new XMLHttpRequest();
+			req2.open("POST", qDirString, true); //true for async!
 			
-			
-			
-			
-			
-			
-			
-			
-			
+			//wait for response to load
+			req2.addEventListener('load',function(){
+				
+				alert("Directions success!");	
+				
+				document.getElementById("demoText4").textContent = req.responseText;
+				
+				
+				
+			})
 			
 		} else {
 			
