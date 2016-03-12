@@ -22,9 +22,15 @@ function getGeo(){
 
 			//alert("we got it!");
 			
-			//var obj = JSON.parse(req.responseText);
+			var obj = JSON.parse(req.responseText);
 			
-			document.getElementById("demoText").textContent = req.responseText;
+			//document.getElementById("demoText").textContent = req.responseText;
+			
+			var tString = "latitude: " + obj.location.lat;
+			
+			tString += " | long: " + obj.location.lng;
+			
+			document.getElementById("demoText").textContent = tString;
 			
 			
 		} else {
@@ -37,4 +43,10 @@ function getGeo(){
 	//activates when call comes back
 	req.send(null);
 	
+	//Chicago
+	//lat: +41.921542
+	//lng: -87.702482
+	//Chi: latlng=41.921542,-87.702482
+	//Atl: latlng=33.794633,-84.448771
+	//church 33.758468, -84.408005
 }
