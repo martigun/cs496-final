@@ -62,6 +62,8 @@ function getGeo(){
 				
 			})
 			
+			req2.send(null);
+			
 		} else {
 			
 			//there was an error
