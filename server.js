@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/myLoc', function(req, res) {
+app.get('/myLoc/:myLatLong', function(req, res) {
 
 
 	var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
@@ -27,8 +27,10 @@ app.get('/myLoc', function(req, res) {
 
 	request.post(testString, function(error, response, body){
 		
+		//body.routes[0].copyrights;
 		
-		console.log(body);
+		
+		console.log(body.routes[0].copyrights);
 		
 	})
 
