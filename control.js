@@ -13,7 +13,13 @@
 
 //here we go
 
+//https://maps.googleapis.com/maps/api/directions/json?origin=33.7946333,-84.44877199999999&destination=30.25,-97.75&key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg
+
 function getGeo(){
+	
+	var testString = 'https://maps.googleapis.com/maps/api/directions/json?'
+	+ 'origin=33.7946333,-84.44877199999999&destination=30.25,-97.75'
+	+ '&key=AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	
 	var myKey = 'AIzaSyBp8lIReveKnqn9vVuxHslFpJxv0Fj0stg';
 	var qGeoString = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' + myKey;
@@ -21,7 +27,9 @@ function getGeo(){
 	
 	var draftLatLong = '30.25,-97.75';
 	
-	//alert("Get geo!");
+	alert(testString);
+	
+	return;
 	
 	var req = new XMLHttpRequest();
 	req.open("POST", qGeoString, true); //true for async!
