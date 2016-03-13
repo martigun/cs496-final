@@ -20,8 +20,12 @@
 			<td>{{this.TeamName}}</td>
 			<td>{{this.Password}}</td>
 			<td>
-				<form action="/viewTeam" method="get">
+				<form action="/viewMyTeam" method="get">
 					<input type="hidden" name="coach_id" value={{this._id}}>
+					<input type="hidden" name="FirstName" value='{{this.FirstName}}'>
+					<input type="hidden" name="LastName" value='{{this.LastName}}'>
+					<input type="hidden" name="TeamName" value='{{this.TeamName}}'>
+					<input type="hidden" name="UserName" value='{{this.UserName}}'>
 					<input type="submit" value="View Team">
 				</form>
 			</td>

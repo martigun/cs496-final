@@ -1,27 +1,35 @@
-<h1>MAIN MENU</h1>
+<div><h1 class="pageHeader">MAIN MENU</h1><div>
 
-
-<input type="button" value="View Coaches" onclick="window.location='/viewCoaches'">
-
-<br>
-
-<input type="button" value="View All Players" onclick="window.location='/viewPlayers'">
-
-<br>
-
-<input type="button" value="View My Team" onclick="window.location='/'">
-
-<br>
-
-<input type="button" value="View Draft Distance" onclick="window.location='/draftDistLoad'">
-
-<form action="/editCoachLoad" method="get">
-	<input type="hidden" name="coach_id" value={{UserID}}>
-	<input type="submit" value="Edit My Account">
+<form action="/viewCoaches" method="get">
+	<input type="submit" value="View Coaches" class="wideButton">
 </form>
 
-<button onclick="window.location='/logout'">Log Out</button>
+<form action="/viewPlayers" method="get">
+	<input type="submit" value="View All Players" class="wideButton">
+</form>
 
+<form action="/viewMyTeam" method="get">
+	<input type="hidden" name="coach_id" value={{UserObj._id}}>
+	<input type="hidden" name="FirstName" value='{{UserObj.FirstName}}'>
+	<input type="hidden" name="LastName" value='{{UserObj.LastName}}'>
+	<input type="hidden" name="TeamName" value='{{UserObj.TeamName}}'>
+	<input type="hidden" name="UserName" value='{{UserObj.UserName}}'>
+	<input type="submit" value="View My Team" class="wideButton">
+</form>
+
+
+<form action="/draftDistLoad" method="get">
+	<input type="submit" value="View Draft Distance" class="wideButton">
+</form>
+
+<form action="/editCoachLoad" method="get">
+	<input type="hidden" name="coach_id" value={{UserObj._id}}>
+	<input type="submit" value="Edit My Account" class="wideButton">
+</form>
+
+<form action="/logout" method="get">
+	<input type="submit" value="Log Out" class="wideButton">
+</form>
 
 
 

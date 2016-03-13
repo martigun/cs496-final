@@ -1,16 +1,23 @@
+<div class="pageHeader">
 <h1>Login</h1>
+</div>
 
 
 <form action="/checkLogin">
 
-	<label>UserName:<input type="text" name="UserName" required></label>
+	<label>UserName:</label>
 	<br>
-	<label>Password:<input type="text" name="Password" value="password" required></label>
+	<input type="text" name="UserName" required>
 	<br>
-	<input type="submit" value="Log In">
+	<br>
+	<label>Password:</label>
+	<br>
+	<input type="text" name="Password" value="password" required>
+	<br>
+	<input type="submit" value="Log In" class="wideButton">
 
 </form>
-<button onclick="window.location='/addCoachLoad'">Create New Account</button>
+<button onclick="window.location='/addCoachLoad'"  class="wideButton">Create New Account</button>
 
 
 

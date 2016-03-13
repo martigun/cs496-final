@@ -3,8 +3,6 @@
 //Winter 2016
 //Final Project
 
-
-
 //set requires
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
@@ -58,10 +56,21 @@ app.get('/menu', function(req, res) {
 	//set UserName and error status
 	context.loginUserName = req.session.loginUserName;
 	context.errStatus = req.session.errStatus;
-	context.UserID = req.session.UserID;
 	
-	//render the menu
-	res.render('menu',context);
+	//get my coach object
+	var getURL = rootURL + '/coach/' + req.session.UserObj._id;
+	var options = { method: 'GET', url : getURL	};
+
+	//Update the UserObj and go to 2
+	request(options, function(error, response, body){
+		
+		//reset user info
+		var obj = JSON.parse(body);
+		context.UserObj = obj;
+		
+		//render the menu
+		res.render('menu',context);
+	});	
 });
 
 //logout//
@@ -71,6 +80,7 @@ app.get('/logout', function(req, res) {
 	req.session.errStatus = false;
 	req.session.loginUserName = false;
 	req.session.loggedIn = 0;
+	req.session.UserObj = false;
 	
 	//go to login
 	res.redirect('/login');
@@ -143,6 +153,7 @@ app.get('/checkLogin', function(req, res) {
 				req.session.loginUserName = foundUserName;
 				req.session.UserID = foundID;
 				req.session.loggedIn = 1;
+				req.session.UserObj = obj;
 				
 				//go to main menu
 				res.redirect('/menu');
@@ -204,7 +215,7 @@ app.get('/viewPlayers', function(req, res) {
 	});
 });
 
-//viewPlayers//
+//viewOnePlayer//
 app.get('/viewOnePlayer', function(req, res) {
 	
 	//create context object
@@ -246,20 +257,160 @@ app.get('/viewOnePlayer', function(req, res) {
 			
 			//set context.coach to object
 			context.coach = obj;
-			//res.render('onePlayer',context);
-			
-			
-			console.log("Coach:" + obj.FirstName);
 		}
 		
+		//set user ID
+		context.UserID = req.session.UserID
 		
 		//render players
 		res.render('onePlayer',context);
 	});
+});
+
+//addOnePlayer//
+app.get('/addOnePlayer', function(req, res) {
 	
 	
+	console.log("add a player");
+	
+	var origURL = req.originalUrl;
+	
+	console.log(origURL);
+	
+	var player_id = req.query.player_id;
+	var coach_id = req.query.coach_id;
 	
 	
+	var options = {
+		method: 'POST',
+		url : rootURL + '/coach/' + coach_id,
+		headers: {'Content-Type' : 'application/json'},
+		json: {
+			"_id" : player_id
+		}
+	};
+	
+	request(options, function(error, response, body){
+		
+		
+		console.log(body);
+	});
+	
+	req.session.errStatus = "Success!";
+	
+	res.redirect('/menu');
+});
+
+//viewMyTeam//
+app.get('/viewMyTeam', function(req, res) {
+	
+	//create context object and get coach ID
+	var context = {};
+	var coach_id = req.query.coach_id;
+	context.FirstName = req.query.FirstName;
+	context.LastName = req.query.LastName;
+	context.TeamName = req.query.TeamName;
+	context.loginUserName = req.session.loginUserName;
+	
+	console.log("Req ID:" + coach_id);
+	
+	console.log("My ID:" + req.session.UserObj._id);
+	
+	//set context of isMyTeam
+	if(coach_id == req.session.UserObj._id){
+		
+		console.log("It is my team!");
+		context.isMyTeam = true;
+	} else {
+		console.log("Not my team");
+		context.isMyTeam = false;
+	}
+
+	//get my coach object
+	var getURL = rootURL + '/coach/' + coach_id;
+	var options = { method: 'GET', url : getURL	};
+
+	//Update the UserObj and go to 2
+	request(options, function(error, response, body){
+		
+		//set obj to body
+		var obj = JSON.parse(body);
+		
+		//if this coach has players
+		if(obj.Players.length > 0){
+		
+			//establish string for parameters
+			var pStr = "";
+			
+			//loop thru players to build param string
+			for(var i=0; i < obj.Players.length; i++){
+			
+				//if not the first element...
+				if(i>0) pStr +=","; //add a comma
+				
+				//add this player ID
+				pStr += obj.Players[i];
+			}
+			
+			//get my coach object
+			var getURL = rootURL + '/players/' + pStr;
+			var options = { method: 'GET', url : getURL	};
+
+			//Update the UserObj and go to 2
+			request(options, function(error, response, body){
+				
+				//update object
+				obj = JSON.parse(body);
+				
+				//set context
+				context.Players = obj;
+				context.errStatus = req.session.errStatus;
+				
+				//Render Page
+				res.render('myTeam',context);
+			});
+			
+		//coach has no players
+		} else {
+			
+			//set context
+			context.Players = false;
+			context.errStatus = "This team has no players.";
+			
+			//Render Page
+			res.render('myTeam',context);
+		}
+	});
+});
+
+//removePlayer//
+app.get('/removePlayer', function(req, res) {
+	
+	//get player id
+	var player_id = req.query.player_id;
+	
+	console.log("Removing player: " + player_id);
+
+	//Delete this player
+	var options = { 
+		method: 'DELETE',
+		url : rootURL + '/remove_player/' + player_id,
+		headers: {'Content-Type' : 'application/json'}
+	};
+	
+	console.log(options);
+	
+	//res.redirect('/viewMyTeam');
+	
+	request(options, function(error, response, body){
+		
+		//send rsponse to console
+		console.log(body);
+		
+		//redirect to myTeam
+		req.session.errStatus = "Player removed.";
+		res.redirect('/menu');
+	});
 	
 });
 
@@ -340,6 +491,7 @@ app.get('/editCoachLoad', function(req, res) {
 	
 	//get coach id
 	var coach_id = req.query.coach_id;
+	var context  = {};
 	
 	console.log(coach_id);
 	
@@ -352,11 +504,12 @@ app.get('/editCoachLoad', function(req, res) {
 	//Get this coach
 	request(options, function(error, response, body){
 		
-		//set dArray to the body
-		var obj = JSON.parse(body);
+		//set context to the body
+		var context = JSON.parse(body);
+		context.loginUserName = req.session.loginUserName;
 		
-		//render coaches
-		res.render('editCoach', obj);
+		//render edit coach
+		res.render('editCoach', context);
 	});
 });
 

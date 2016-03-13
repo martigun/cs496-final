@@ -6,17 +6,22 @@
 	
 </head>
 <body>
-	<div><img src="banner.bmp" onclick="window.location='/'" ></img></div>
+	<div><img src="banner.png" onclick="window.location='/'" class="bannerImage"></img></div>
+	<!-- Logged in as -->
+	<div class="loginUser">
+		{{#if loginUserName}}
+			logged in as:{{loginUserName}}
+		{{/if}}
+	</div>
+	
+	<!-- Body -->
 	{{{body}}}
 
-	<!-- Logged in as -->
-	{{#if loginUserName}}
-		<p>logged in as:{{loginUserName}}</p>
-	{{/if}}
-	
 	<!-- Error Status -->
-	{{#if errStatus}}
-		<p>{{errStatus}}</p>
-	{{/if}}
+	<div>
+		{{#if errStatus}}
+			<p>{{errStatus}}</p>
+		{{/if}}
+	</div>
 </body>
 </html>

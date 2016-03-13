@@ -1,0 +1,63 @@
+<h1>Team {{TeamName}}</h1>
+<h1>Coach: {{FirstName}} {{LastName}}</h1>
+
+<table >
+
+	<!-- Header Row -->
+	<tr>
+		<th>First</th>
+		<th>Last</th>
+		<th>Pos</th>
+		<th>Team</th>
+		<th>ProjPts</th>
+		<th>Cost</th>
+	</tr>
+	{{#if isMyTeam}}
+		<!-- The Players Table (My Team) -->
+		{{#each Players}}
+			<tr>
+				<td>{{this.FirstName}}</td>
+				<td>{{this.LastName}}</td>
+				<td>{{this.Pos}}</td>
+				<td>{{this.Team}}</td>
+				<td>{{this.ProjPts}}</td>
+				<td>{{this.Cost}}</td>
+				<td>
+					<!-- Option to remove is My Team -->
+					<form action="/removePlayer" method="get">
+						<input type="hidden" name="player_id" value={{this._id}}>
+						<input type="submit" value="Remove from Team"/>
+					</form>
+				</td>
+			</tr>
+		{{/each}}
+	{{else}}
+		<!-- The Players Table (Not My Team) -->
+		{{#each Players}}
+			<tr>
+				<td>{{this.FirstName}}</td>
+				<td>{{this.LastName}}</td>
+				<td>{{this.Pos}}</td>
+				<td>{{this.Team}}</td>
+				<td>{{this.ProjPts}}</td>
+				<td>{{this.Cost}}</td>
+				<td></td>
+			</tr>
+		{{/each}}
+	{{/if}}
+</table>
+
+<form action="/viewCoaches" method="get">
+	<input type="submit" value="Back to Coaches">
+</form>
+
+
+
+
+	
+
+
+
+
+
+

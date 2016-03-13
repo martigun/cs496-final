@@ -1,8 +1,5 @@
 <h1>View Player</h1>
 
-
-
-
 	<label>player_id:<input type="text" name="player_id" value="{{player_id}}" readonly></label>
 	<br>
 	<label>FirstName:<input type="text" name="FirstName" value="{{FirstName}}" readonly></label>
@@ -17,20 +14,21 @@
 	<br>
 	<label>Cost:<input type="text" name="Cost" value="{{Cost}}" readonly></label>
 	<br>
-	<p>
+	<div>
 	{{#if coach}}
-		Coach FirstName: {{coach.FirstName}}
-		Coach LastName: {{coach.LastName}}
-		Coach TeamName: {{coach.TeamName}}
+		<p>Coach FirstName: {{coach.FirstName}}</p>
+		<p>Coach LastName: {{coach.LastName}}</p>
+		<p>Coach TeamName: {{coach.TeamName}}</p>
 	{{else}}
 		<form action="/addOnePlayer" method="get">
-			This player has no coach.
+			<p>This player has no coach.</p>
 			<input type="hidden" name="player_id" value="{{player_id}}">
-			<input type="hidden" name="coach_id" value="{{coach._id}}">
+			<input type="hidden" name="coach_id" value="{{UserID}}">
 			<input type="submit" value="Add this Player"/>
 		</form>
 	{{/if}}
-	</p>
+	</div>
+	<input type="button" value="Back to All Players" onclick="window.location='/viewPlayers'"/>
 	
 	
 

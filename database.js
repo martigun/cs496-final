@@ -388,6 +388,53 @@ app.get('/player/:id', function(req,res){
 	});	
 });
 
+//GET for players with ids xyz
+app.get('/players/:ids', function(req,res){
+	
+	//message console
+	console.log("I received a GET id request for /players");
+	
+	//split params into stringArray
+	var stringArray = req.params.ids.split(',');
+	
+	//establish a query array
+	var qArray = [];
+	
+	//fill objArray with ID objects
+	for(var i=0; i < stringArray.length; i++) {
+
+		//Get ID object from the string (mongo looks up based on this)
+		var ID_object = mongojs.ObjectId(stringArray[i]);
+		
+		//push ID object into qArray
+		qArray.push({ _id : ID_object });
+	}
+
+	//set the OR query object
+	var queryObject = {$or:qArray};
+	
+	//send query object to console
+	console.log(queryObject);
+
+	//find this player
+	db.player.find(
+		queryObject,
+		
+		function (err,docs) {	
+			//console.log(docs); //send data to the console
+			
+			//check to see if id was found
+			if(docs==null){
+				
+				res.status(404); //set status to nothing found
+				res.json(docs); //return null	
+			} else {
+				
+				res.json(docs); //sends data back
+			}
+	});	
+});
+
 //POST for coach
 app.post('/coach', function(req,res){
 	
@@ -644,6 +691,64 @@ app.delete('/player/:id', function(req,res){
 			
 			//send done.
 			res.json("Player has been removed.");
+			
+		}
+	});	
+	
+});
+
+//Remove a player from all teams
+app.delete('/remove_player/:id', function(req,res){
+	
+	//get the content-type of the post
+	var contype = req.headers['content-type'];
+	
+	//if not application/json return Not Acceptable
+	if (contype != 'application/json') {
+		res.status(406); //406 Not Acceptable
+		var s = "Not Acceptable. "
+		s = s + "This API only supports application/json."
+		res.send(s);
+		return
+	}
+	
+	//set up id var using the param and convert
+	var player_id = mongojs.ObjectId(req.params.id); 
+		
+	//message console
+	console.log("I received a Remove for a /player");
+	
+	db.player.findOne({_id:player_id},function (err,docs) {	
+		//console.log(docs); //send data to the console
+		
+		//check to see if id was found
+		if(docs==null){
+			
+			console.log("This player was not found.");
+			res.status(404); //set status to nothing found
+			res.json(docs); //return null	
+		} else {
+			
+			//go through each coach to clean up players
+			db.coach.find().forEach(function(err2,docs2){
+				
+				//if the coach is not null...
+				if(docs2!=null){
+					
+					//remove this player_id
+					db.coach.findAndModify({ 
+						query: {_id: docs2._id},
+						update: {$pull: {
+							Players: player_id
+						}},
+						new: true,
+						}, function(err3,docs3){} //return nothing here
+					);
+				}
+			});
+			
+			//send done.
+			res.json("Player has been removed from all teams.");
 			
 		}
 	});	
