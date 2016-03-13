@@ -1,20 +1,29 @@
 <h1>MAIN MENU</h1>
 
 
+<input type="button" value="View Coaches" onclick="window.location='/viewCoaches'">
 
-<button onclick="window.location='/viewCoaches'">View Coaches</button>
 <br>
-<button onclick="window.location='/addCoachForm'">Add Coach</button>
+
+<input type="button" value="View All Players" onclick="window.location='/viewPlayers'">
+
 <br>
-<button onclick="window.location='/'">View All Players</button>
+
+<input type="button" value="View My Team" onclick="window.location='/'">
+
 <br>
-<button onclick="window.location='/'">View My Team</button>
-<br>
-<button onclick="window.location='/draftDist'">View Draft Distance</button>
-<br>
-<button onclick="window.location='/'">Edit My Account</button>
-<br>
-<button onclick="window.location='/'">Log Out</button>
+
+<input type="button" value="View Draft Distance" onclick="window.location='/draftDistLoad'">
+
+<form action="/editCoachLoad" method="get">
+	<input type="hidden" name="coach_id" value={{UserID}}>
+	<input type="submit" value="Edit My Account">
+</form>
+
+<button onclick="window.location='/logout'">Log Out</button>
+
+
+
 
 
 

@@ -1,0 +1,45 @@
+<h1>View Player</h1>
+
+
+
+
+	<label>player_id:<input type="text" name="player_id" value="{{player_id}}" readonly></label>
+	<br>
+	<label>FirstName:<input type="text" name="FirstName" value="{{FirstName}}" readonly></label>
+	<br>
+	<label>LastName:<input type="text" name="LastName" value="{{LastName}}" readonly></label>
+	<br>
+	<label>Pos:<input type="text" name="Pos" value="{{Pos}}" readonly></label>
+	<br>
+	<label>Team:<input type="text" name="Team" value="{{Team}}" readonly></label>
+	<br>
+	<label>ProjPts:<input type="text" name="ProjPts" value="{{ProjPts}}" readonly></label>
+	<br>
+	<label>Cost:<input type="text" name="Cost" value="{{Cost}}" readonly></label>
+	<br>
+	<p>
+	{{#if coach}}
+		Coach FirstName: {{coach.FirstName}}
+		Coach LastName: {{coach.LastName}}
+		Coach TeamName: {{coach.TeamName}}
+	{{else}}
+		<form action="/addOnePlayer" method="get">
+			This player has no coach.
+			<input type="hidden" name="player_id" value="{{player_id}}">
+			<input type="hidden" name="coach_id" value="{{coach._id}}">
+			<input type="submit" value="Add this Player"/>
+		</form>
+	{{/if}}
+	</p>
+	
+	
+
+
+
+
+
+
+
+
+
+

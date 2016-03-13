@@ -6,15 +6,15 @@
 
 <form action="/editCoach" method="get">
 
-	<label>UserName:<input type="text" name="UserName" value={{UserName}} required></label>
+	<label>UserName:<input type="text" name="UserName" value="{{UserName}}" readonly></label>
 	<br>
-	<label>FirstName:<input type="text" name="FirstName" value={{FirstName}} required></label>
+	<label>FirstName:<input type="text" name="FirstName" value="{{FirstName}}" required></label>
 	<br>
-	<label>LastName:<input type="text" name="LastName" value={{LastName}} required></label>
+	<label>LastName:<input type="text" name="LastName" value="{{LastName}}" required></label>
 	<br>
-	<label>TeamName:<input type="text" name="TeamName" value={{TeamName}} required></label>
+	<label>TeamName:<input type="text" name="TeamName" value="{{TeamName}}" required></label>
 	<br>
-	<label>Password:<input type="text" name="Password" value={{Password}} required></label>
+	<label>Password:<input type="text" name="Password" value="{{Password}}" required></label>
 	<br>
 	
 	<!-- ID Goes here -->
@@ -22,6 +22,11 @@
 	
 	<input type="submit" value="Save"/>
 	
+</form>
+
+<form action="/deleteCoach" method="get">
+	<input type="hidden" name="coach_id" value={{_id}}>
+	<input type="submit" value="Delete this Account"/>
 </form>
 
 

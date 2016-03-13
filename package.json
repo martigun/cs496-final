@@ -12,7 +12,7 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.2",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.11.3",
+    "express-session": "^1.13.0",
     "mongodb": "^2.1.7",
     "mongojs": "^2.3.0",
     "request": "~2.34.0"

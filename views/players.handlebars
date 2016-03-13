@@ -1,0 +1,45 @@
+<h1>-- Players --</h1>
+
+<table >
+
+	<!-- Header Row -->
+	<tr>
+		<th>First</th>
+		<th>Last</th>
+		<th>Pos</th>
+		<th>Team</th>
+		<th>View</th>
+	</tr>
+	
+	<!-- The Data Table -->
+	{{#each dArray}}
+		<tr>
+			<td>{{this.FirstName}}</td>
+			<td>{{this.LastName}}</td>
+			<td>{{this.Pos}}</td>
+			<td>{{this.Team}}</td>
+			<td>
+				<form action="/viewOnePlayer" method="get">
+					<input type="hidden" name="player_id" value="{{this._id}}">
+					<input type="hidden" name="FirstName" value="{{this.FirstName}}">
+					<input type="hidden" name="LastName" value="{{this.LastName}}">
+					<input type="hidden" name="Pos" value="{{this.Pos}}">
+					<input type="hidden" name="Team" value="{{this.Team}}">
+					<input type="hidden" name="ProjPts" value={{this.ProjPts}}>
+					<input type="hidden" name="Cost" value={{this.Cost}}>
+					
+					<input type="submit" value="View Player">
+				</form>
+			</td>
+		</tr>
+	{{/each}}
+
+
+</table>
+
+
+
+
+
+
+

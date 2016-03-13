@@ -8,6 +8,15 @@
 <body>
 	<div><img src="banner.bmp" onclick="window.location='/'" ></img></div>
 	{{{body}}}
+
+	<!-- Logged in as -->
+	{{#if loginUserName}}
+		<p>logged in as:{{loginUserName}}</p>
+	{{/if}}
 	
+	<!-- Error Status -->
+	{{#if errStatus}}
+		<p>{{errStatus}}</p>
+	{{/if}}
 </body>
 </html>
