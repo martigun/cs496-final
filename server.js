@@ -23,7 +23,8 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-var rootURL = 'http://localhost:3600'
+//var rootURL = 'http://localhost:3600'
+var rootURL = 'http://52.88.255.17/:3600'
 
 app.get('/', function(req, res) {
 	
