@@ -1,0 +1,48 @@
+<h1>-- Coaches --</h1>
+
+
+<button onclick="window.location='/addCoachForm'">Add Coach</button>
+
+<table id="coachesTbl">
+
+	<!-- Header Row -->
+	<tr>
+		<th>UserName</th>
+		<th>First</th>
+		<th>Last</th>
+		<th>TeamName</th>
+		<th>Password</th>
+	</tr>
+	
+	<!-- The Data Table -->
+	{{#each dArray}}
+		<tr>
+			<td>{{this.UserName}}</td>
+			<td>{{this.FirstName}}</td>
+			<td>{{this.LastName}}</td>
+			<td>{{this.TeamName}}</td>
+			<td>{{this.Password}}</td>
+			<td>
+				<form action="/deleteCoach" method="get">
+					<input type="hidden" name="coach_id" value={{this._id}}>
+					<input type="submit" value="Delete"/>
+				</form>
+			</td>
+			<td>
+				<form action="/editCoachForm" method="get">
+					<input type="hidden" name="coach_id" value={{this._id}}>
+					<input type="submit" value="Edit">
+				</form>
+			</td>
+		</tr>
+	{{/each}}
+
+
+</table>
+
+
+
+
+
+
+

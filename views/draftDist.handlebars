@@ -1,0 +1,38 @@
+<h1>FANTASY DRAFT INFO</h1>
+<h2>How close are you?</h2>
+
+<!-- submit to getDraft -->
+<form action="/getDraft">
+	<input type="hidden" name="myLatLong" id="myLatLong">
+	<input type="submit" value="Get Info"/>
+</form>
+
+<!-- Display info -->
+
+{{#if draft_dist}}
+
+	<h3>Your distance to the draft:</h3>
+	<p id="draft_dist">{{draft_dist}}</p>
+
+	<h3>Your time to travel to the draft:</h3>
+	<p id="draft_dur">{{draft_dur}}</p>
+
+	<h3>Your current location:</h3>
+	<p id="draft_start">{{draft_start}}</p>
+
+	<h3>Your ending point:</h3>
+	<p id="draft_end">{{draft_end}}</p>
+	
+
+{{/if}}
+
+<script src="geoHelper.js"></script>
+
+
+
+
+
+
+
+
+
