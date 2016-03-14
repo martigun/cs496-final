@@ -3,21 +3,25 @@
 </div>
 
 
+
 <form action="/checkLogin">
 
-	<label>UserName:</label>
+	<label class="standard">User Name:</label>
 	<br>
-	<input type="text" name="UserName" required>
+	<input type="text" class="inputBox" name="UserName" required>
 	<br>
 	<br>
-	<label>Password:</label>
+	<label class="standard">Password:</label>
 	<br>
-	<input type="text" name="Password" value="password" required>
+	<input type="password" class="inputBox" name="Password" value="password" required>
+	<br>
 	<br>
 	<input type="submit" value="Log In" class="wideButton">
-
+	
+	
 </form>
-<button onclick="window.location='/addCoachLoad'"  class="wideButton">Create New Account</button>
 
-
+<form action="/addCoachLoad" method="get">
+	<input type="submit" value="Create New Account" class="wideButton">
+</form>
 

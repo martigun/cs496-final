@@ -1,28 +1,28 @@
-<h1>-- Edit Coach --</h1>
+<div class="pageHeader">
+<h1>Edit My Account</h1>
+</div>
 
+<div class="backgroundGray">
+	<form action="/editCoach" method="get">
 
-<p> Edit coach page </p>
-
-
-<form action="/editCoach" method="get">
-
-	<label>UserName:<input type="text" name="UserName" value="{{UserName}}" readonly></label>
-	<br>
-	<label>FirstName:<input type="text" name="FirstName" value="{{FirstName}}" required></label>
-	<br>
-	<label>LastName:<input type="text" name="LastName" value="{{LastName}}" required></label>
-	<br>
-	<label>TeamName:<input type="text" name="TeamName" value="{{TeamName}}" required></label>
-	<br>
-	<label>Password:<input type="text" name="Password" value="{{Password}}" required></label>
-	<br>
-	
-	<!-- ID Goes here -->
-	<input type="hidden" name="coach_id" value={{_id}}>
-	
-	<input type="submit" value="Save"/>
-	
-</form>
+		<label class="standard">UserName:<input type="text" name="UserName" value="{{UserName}}" readonly></label>
+		<br>
+		<label class="standard">FirstName:<input type="text" name="FirstName" value="{{FirstName}}" required></label>
+		<br>
+		<label class="standard">LastName:<input type="text" name="LastName" value="{{LastName}}" required></label>
+		<br>
+		<label class="standard">TeamName:<input type="text" name="TeamName" value="{{TeamName}}" required></label>
+		<br>
+		<label class="standard">Password:<input type="password" name="Password" value="{{Password}}" required></label>
+		<br>
+		
+		<!-- ID Goes here -->
+		<input type="hidden" name="coach_id" value={{_id}}>
+		
+		<input type="submit" value="Save"/>
+		
+	</form>
+</div>
 
 <form action="/deleteCoach" method="get">
 	<input type="hidden" name="coach_id" value={{_id}}>

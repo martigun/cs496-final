@@ -1,27 +1,38 @@
 <!doctype html>
 <html>
 <head>
-	<title>VCFL</title>
+	<title>FFMGR</title>
 	<link rel="stylesheet" href="styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
-	<div><img src="banner.png" onclick="window.location='/'" class="bannerImage"></img></div>
-	<!-- Logged in as -->
-	<div class="loginUser">
-		{{#if loginUserName}}
-			logged in as:{{loginUserName}}
-		{{/if}}
+
+	<div>
+		<img src="banner.png" onclick="window.location='/'" class="bannerImage"/>
 	</div>
 	
+	
+
+	
 	<!-- Body -->
+	<div class="bodyText">
 	{{{body}}}
+	</div>
 
 	<!-- Error Status -->
-	<div>
+	<div class="appStatus">
 		{{#if errStatus}}
 			<p>{{errStatus}}</p>
 		{{/if}}
 	</div>
+	
+	<!-- Logged in as -->
+	<div class="loginUser">
+		{{#if loginUserName}}
+			logged in as: {{loginUserName}}
+		{{/if}}
+	</div>
+
 </body>
 </html>

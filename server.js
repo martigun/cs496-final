@@ -100,9 +100,13 @@ app.get('/login', function(req, res) {
 //checkLogin//
 app.get('/checkLogin', function(req, res) {
 	
+	console.log("checking login...");
+	
 	//get the input UserName as password
 	var inputUserName = req.query.UserName;
 	var inputPassword = req.query.Password;
+	
+	console.log("Input PW:" + inputPassword);
 	
 	//set options for search
 	var options = { 
@@ -115,6 +119,8 @@ app.get('/checkLogin', function(req, res) {
 		
 		//set obj to the body
 		var obj = JSON.parse(body);
+		
+		console.log(obj);
 		
 		//if username is not found...
 		if(!obj){
@@ -129,7 +135,7 @@ app.get('/checkLogin', function(req, res) {
 		//If UserName was found...
 		} else{
 			
-			console.log(obj);
+			console.log("user was found.");
 			
 			//set login user and pw
 			var foundUserName = obj.UserName;
@@ -139,8 +145,13 @@ app.get('/checkLogin', function(req, res) {
 			
 			//message console
 			console.log("Found User: " + foundUserName);
-			console.log("Found Password: " + foundPassword);
+			console.log("Found Password: [" + foundPassword + "]");
 			console.log("Found ID: " + foundID);
+			
+			console.log("Input PW: [" + inputPassword + "]");
+			
+			
+			
 			
 			//if password is correct
 			if(inputPassword == foundPassword){
@@ -296,7 +307,7 @@ app.get('/addOnePlayer', function(req, res) {
 		console.log(body);
 	});
 	
-	req.session.errStatus = "Success!";
+	req.session.errStatus = "Player has been added.";
 	
 	res.redirect('/menu');
 });
@@ -408,7 +419,7 @@ app.get('/removePlayer', function(req, res) {
 		console.log(body);
 		
 		//redirect to myTeam
-		req.session.errStatus = "Player removed.";
+		req.session.errStatus = "Player has been removed.";
 		res.redirect('/menu');
 	});
 	
@@ -434,6 +445,7 @@ app.get('/deleteCoach', function(req, res) {
 		
 		//redirect to coach table
 		req.session.loginUserName = false;
+		req.session.errStatus = "Account has been removed.";
 		res.redirect('/login');
 	});
 });

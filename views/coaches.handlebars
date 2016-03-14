@@ -1,40 +1,53 @@
-<h1>-- Coaches --</h1>
+<div class="pageHeader">
+<h1>Coaches</h1>
+</div>
 
-<table id="coachesTbl">
+<div class="backgroundGray">
+	<table class="appTable">
 
-	<!-- Header Row -->
-	<tr>
-		<th>UserName</th>
-		<th>First</th>
-		<th>Last</th>
-		<th>TeamName</th>
-		<th>Password</th>
-	</tr>
-	
-	<!-- The Data Table -->
-	{{#each dArray}}
+		<!-- Header Row -->
 		<tr>
-			<td>{{this.UserName}}</td>
-			<td>{{this.FirstName}}</td>
-			<td>{{this.LastName}}</td>
-			<td>{{this.TeamName}}</td>
-			<td>{{this.Password}}</td>
-			<td>
-				<form action="/viewMyTeam" method="get">
-					<input type="hidden" name="coach_id" value={{this._id}}>
-					<input type="hidden" name="FirstName" value='{{this.FirstName}}'>
-					<input type="hidden" name="LastName" value='{{this.LastName}}'>
-					<input type="hidden" name="TeamName" value='{{this.TeamName}}'>
-					<input type="hidden" name="UserName" value='{{this.UserName}}'>
-					<input type="submit" value="View Team">
-				</form>
-			</td>
+			<td class="coachTable-col1 standard boldMe">First</td>
+			<td class="coachTable-col2 standard boldMe">Last</td>
+			<td class="coachTable-col3 standard boldMe"></td>
 		</tr>
-	{{/each}}
+		
+		
+		
+		<!-- The Data Table -->
+		{{#each dArray}}
+			<tr>
 
 
-</table>
+				<td class="standard">{{this.FirstName}}</td>
+				<td class="standard">{{this.LastName}}</td>
+					
+					
+				<td>	
 
+					<form action="/viewMyTeam" method="get">
+						<input type="hidden" name="coach_id" value={{this._id}}>
+						<input type="hidden" name="FirstName" value='{{this.FirstName}}'>
+						<input type="hidden" name="LastName" value='{{this.LastName}}'>
+						<input type="hidden" name="TeamName" value='{{this.TeamName}}'>
+						<input type="hidden" name="UserName" value='{{this.UserName}}'>
+						<input type="submit" value="View">
+					</form>
+
+				</td>
+			</tr>
+
+		{{/each}}
+		
+
+
+
+	</table>
+</div>
+
+<form action="/menu" method="get">
+	<input type="submit" value="Main Menu">
+</form>
 
 
 

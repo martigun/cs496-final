@@ -1,27 +1,28 @@
+<div class="pageHeader">
 <h1>View Player</h1>
+</div>
 
-	<label>player_id:<input type="text" name="player_id" value="{{player_id}}" readonly></label>
+<div class="backgroundGray">
+	<label class="standard">First Name:<input type="text" name="FirstName" value="{{FirstName}}" readonly></label>
 	<br>
-	<label>FirstName:<input type="text" name="FirstName" value="{{FirstName}}" readonly></label>
+	<label class="standard">Last Name:<input type="text" name="LastName" value="{{LastName}}" readonly></label>
 	<br>
-	<label>LastName:<input type="text" name="LastName" value="{{LastName}}" readonly></label>
+	<label class="standard">Position:<input type="text" name="Pos" value="{{Pos}}" readonly></label>
 	<br>
-	<label>Pos:<input type="text" name="Pos" value="{{Pos}}" readonly></label>
+	<label class="standard">Team:<input type="text" name="Team" value="{{Team}}" readonly></label>
 	<br>
-	<label>Team:<input type="text" name="Team" value="{{Team}}" readonly></label>
+	<label class="standard">Project Points:<input type="text" name="ProjPts" value="{{ProjPts}}" readonly></label>
 	<br>
-	<label>ProjPts:<input type="text" name="ProjPts" value="{{ProjPts}}" readonly></label>
-	<br>
-	<label>Cost:<input type="text" name="Cost" value="{{Cost}}" readonly></label>
+	<label class="standard">Cost:<input type="text" name="Cost" value="{{Cost}}" readonly></label>
 	<br>
 	<div>
 	{{#if coach}}
-		<p>Coach FirstName: {{coach.FirstName}}</p>
-		<p>Coach LastName: {{coach.LastName}}</p>
-		<p>Coach TeamName: {{coach.TeamName}}</p>
+		<p style="text-align:center">Coach First Name: {{coach.FirstName}}</p>
+		<p style="text-align:center">Coach Last Name: {{coach.LastName}}</p>
+		<p style="text-align:center">Coach Team Name: {{coach.TeamName}}</p>
 	{{else}}
 		<form action="/addOnePlayer" method="get">
-			<p>This player has no coach.</p>
+			<p style="text-align:center">This player has no coach.</p>
 			<input type="hidden" name="player_id" value="{{player_id}}">
 			<input type="hidden" name="coach_id" value="{{UserID}}">
 			<input type="submit" value="Add this Player"/>
@@ -29,7 +30,11 @@
 	{{/if}}
 	</div>
 	<input type="button" value="Back to All Players" onclick="window.location='/viewPlayers'"/>
-	
+</div>	
+
+<form action="/viewPlayers" method="get">
+	<input type="submit" value="View All Players" class="wideButton">
+</form>
 	
 
 

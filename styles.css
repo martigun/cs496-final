@@ -1,37 +1,209 @@
 
 body {
 
-	font-family: "Arial";
-}
-
-.wideButton {
 	
-	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	background-image: url("bannerNew.jpg");
+	background-size: cover;
+	color: white;
+	
+	
+}
+
+h1 {
+
+	text-transform: uppercase;
+}
+
+
+input[type=submit] {
+
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	margin-bottom: 2%;
 	height: 120px;
-	margin: 1%;
-	font-size: 400%;
+
+	font-size: 64px;
+	
+	background-color: rgb(255, 127, 39);
+	border-radius: 30px;
+	color: white;
+	
 }
 
-.pageHeader {
-	width: 100%;
-	text-align: center;
-	font-size: 400%;
+input[type=text] {
+
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 72px;
+	font-size: 56px;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
-.loginUser {
-	width: 100%;
-	text-align: center;
-	font-size: 400%;
+input[type=password] {
 
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 72px;
+	font-size: 56px;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
 .bannerImage {
 	
 	width: 100%;
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	
-	
+	height: auto;
+	position: fixed;
+	top: 0;
+	opacity: .9;
+}
+
+
+
+.pageHeader {
+	width: 100%;
+	text-align: center;
+	font-size: 48px;
+	margin-top: 25%;
+}
+
+.standard {
+
+
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 64px;
 
 }
+
+.boldMe {
+
+	font-weight: bold;
+}
+
+
+.loginUser {
+
+	text-align: center;
+	font-size: 50px;
+	width: 100%;
+	background-color: white;
+	color: black;
+	opacity: .6;
+
+}
+
+.appStatus {
+	
+	width: 100%;
+	font-size: 50px;
+	color: red;
+	background-color: white;
+	opacity: .6;
+	text-align: center;
+	font-weight: bold;
+
+}
+
+
+
+input:read-only{
+
+	background-color: rgb(170,170,170); 
+
+}
+
+
+.backgroundGray{
+
+	border-radius: 30px;
+	background-color: gray;
+	opacity: .9;
+
+}
+
+/* table stuff */
+
+#playerTable {
+	
+	border-radius: 30px;
+	font-size: 50px;
+	width: 100%;
+	background-color: gray;
+	opacity: .8;
+
+}
+
+.appTable{
+	table-layout: fixed;
+	width: 100%;
+	white-space: nowrap;
+}
+
+.appTable td{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#teamTable{
+	
+	font-size: 50px;
+	
+}
+
+#teamTable input[type=submit]{
+	
+	font-size: 50px;
+	
+}
+
+/* Coach Table Widths*/
+
+.coachTable-col1{
+	
+	width: 30%;
+}
+
+.coachTable-col2{
+	
+	width: 40%;
+}
+
+.coachTable-col3{
+	
+	width: 30%;
+}
+
+/* Team Table Widths*/
+
+.teamTable-col1{
+	
+	width: 30%;
+}
+
+.teamTable-col2{
+	
+	width: 15%;
+}
+.teamTable-col3{
+	
+	width: 15%;
+}
+.teamTable-col4{
+	
+	width: 15%;
+}
+.teamTable-col5{
+	
+	width: 25%;
+}
+
+
