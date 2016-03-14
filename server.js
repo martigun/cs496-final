@@ -1,7 +1,7 @@
 //Gunnar Martin
 //CS496
 //Winter 2016
-//Final Project
+//Final Project: FFBM
 
 //set requires
 var express = require('express'); // Express web server framework
